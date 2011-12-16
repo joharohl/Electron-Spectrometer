@@ -1,0 +1,4 @@
+Start of new run - 12/15/2011 12:23:26 PM
+width, voltage, fitness
+30, 0, 0.1, 1
+30, 0, 0.2, 1

@@ -1,0 +1,86 @@
+Start of new run
+iteration no=1best_conf_fitness=0.70833333333333 ,e1=23 ,e2=172 ,e3=150
+iteration no=2best_conf_fitness=0.70833333333333 ,e1=23 ,e2=172 ,e3=150
+Start of new run
+iteration no=1best_conf_fitness=0.63768115942029 ,e1=87 ,e2=91 ,e3=45
+iteration no=2best_conf_fitness=0.66216216216216 ,e1=128.1109561449 ,e2=105.1109561449 ,e3=169.1109561449
+end of Run
+-----------------------------------
+Start of new run
+iteration no=1best_conf_fitness=0.64 ,e1=47 ,e2=177 ,e3=177
+iteration no=2best_conf_fitness=0.67567567567568 ,e1=72.405203405866 ,e2=104.40520340587 ,e3=101.40520340587
+end of Run
+-----------------------------------
+Start of new run - 1323476656
+iteration no=1, best_conf_fitness=0.75757575757576 ,e1=176 ,e2=114 ,e3=179
+iteration no=2, best_conf_fitness=0.75757575757576 ,e1=176 ,e2=114 ,e3=179
+end of Run
+-----------------------------------
+Start of new run - 12/9/2011 4:25:31 PM
+iteration no=1, best_conf_fitness=0.67105263157895 ,e1=129 ,e2=85 ,e3=29
+iteration no=2, best_conf_fitness=0.70149253731343 ,e1=0 ,e2=0 ,e3=19.84817957091
+iteration no=3, best_conf_fitness=0.70149253731343 ,e1=0 ,e2=0 ,e3=19.84817957091
+iteration no=4, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=5, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=6, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=7, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=8, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=9, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+iteration no=10, best_conf_fitness=0.70833333333333 ,e1=0 ,e2=0 ,e3=73.442614489485
+end of Run
+-----------------------------------
+Start of new run - 12/9/2011 4:28:18 PM
+iteration no=1, best_conf_fitness=0.68181818181818 ,e1=6 ,e2=143 ,e3=79
+iteration no=2, best_conf_fitness=0.68181818181818 ,e1=6 ,e2=143 ,e3=79
+iteration no=3, best_conf_fitness=0.68181818181818 ,e1=6 ,e2=143 ,e3=79
+iteration no=4, best_conf_fitness=0.68181818181818 ,e1=6 ,e2=143 ,e3=79
+iteration no=5, best_conf_fitness=0.68181818181818 ,e1=6 ,e2=143 ,e3=79
+iteration no=6, best_conf_fitness=0.71830985915493 ,e1=0 ,e2=0 ,e3=0
+iteration no=7, best_conf_fitness=0.71830985915493 ,e1=0 ,e2=0 ,e3=0
+Start of new run - 12/9/2011 4:29:53 PM
+Start of new run - 12/09/11 16:30:54
+iteration no=1, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=2, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=3, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=4, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=5, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=6, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=7, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=8, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=9, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=10, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=11, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=12, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=13, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=14, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=15, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=16, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=17, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=18, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=19, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=20, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=21, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=22, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=23, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=24, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=25, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=26, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=27, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=28, best_conf_fitness=0.6431654676259 ,e1=182 ,e2=56 ,e3=57
+iteration no=29, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=30, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=31, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=32, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=33, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=34, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=35, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=36, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=37, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=38, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=39, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=40, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=41, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=42, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+iteration no=43, best_conf_fitness=0.66292134831461 ,e1=173.97280716296 ,e2=173.97280716296 ,e3=173.97280716296
+Start of new run - 12/9/2011 4:53:05 PM
+iteration no=1, best_conf_fitness=0.50831024930748 ,e1=128 ,e2=123 ,e3=169

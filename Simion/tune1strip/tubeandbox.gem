@@ -1,0 +1,157 @@
+;1mm=4gu (scale=0.25 in SIMION)
+
+$(local width = 4*45+30)
+$(local length = 50*4)
+$(local height = 92)
+$(local channeltron_radius = 15*4/2)
+
+$( if not _G.s1 then _G.s1 = 75 end)
+
+;Define the array, add 100 between the real end of the box and the back wall.
+pa_define($(width+150),$(height),$(length),p,n) 		
+
+
+; Tube.
+electrode(1)
+{
+	locate(6,46,0,1,0,0,180)
+	{
+      		fill			;Volume fill.
+		{ 
+			within		;Include volume.
+			{
+ 				cylinder(0,0,0,120,120,200) 
+			}
+			notin
+			{
+ 				cylinder(0,0,0,48,48,200) 
+			}
+			notin
+			{
+				box3d(0,200,0,-200,-200,-200)
+			}
+# local nholes= 7			
+# for n=1,nholes do
+
+# local zpos=(n-1)*27.5+17
+			locate(0,0,$(-zpos),1,-90)        ;Hole no. 1.
+			{
+				notin
+				{
+					circle(0,0,10,10)
+				}
+			}
+			locate(0,0,$(-zpos),1,90,0,90)        ;Hole no. 1.
+			{
+				notin
+				{
+					circle(0,0,10,10)
+				}
+			}
+# end
+		}
+
+	}
+}
+
+; First mesh
+electrode(1)
+{
+	locate(6,46,0,1,180)
+	{
+		fill
+		{
+			within{cylinder(0,0,0,124,124,200)}
+			notin{circle(0,0,123,123)}
+		}	
+	}
+}
+
+
+
+
+locate(150,0,0){
+; box.
+electrode(1)
+{
+	fill			;Volume fill.
+	{ 
+		within		;Include volume.
+		{
+ 			box3d(0,0,0,$(width-1),$(height-1),$(length-1)) 
+		}
+		;make it hollow, 2 gu thick walls (0.5mm)
+		notin
+		{
+ 			box3d(2,2,2,$(width-2-30),$(height-3),$(length-3)) 
+		}
+		;leave room for the back wall.
+		notin
+		{
+ 			box3d($(width-30+2),2,2,$(width-3),$(height-3),$(length-3)) 
+		}
+		
+		;front hole.
+		notin
+		{
+			box3d(0,$(height/2-20),2,2,$(height/2+20),$(length-3))
+		}
+
+		;make a hole for the channeltrons.
+		locate(0,$(height/2),0,1,90)
+		{
+			notin
+			{
+				cylinder(-$(length/2),0,$(width+1-30),$(channeltron_radius),$(channeltron_radius),5)
+			}
+		} 
+
+		
+	}
+
+
+	
+		
+}
+
+;final plate.
+electrode(2)
+{
+	fill
+	{
+		locate($(width-2-30),0,$(length/2),1,90,0,-90)
+		{
+			;Map out the shape
+			within{polyline(-$(_G.s1/2),0 ,$(_G.s1/2),0 ,$(_G.s1/2),$((width-30-4)), -$(_G.s1/2),$((width-30-4)) )}
+			
+			;trim away z-direction excess.
+			notin{box3d(-10000,     0,  4, 10000,10000, $(height-5))}
+			notin{box3d(-10000,-10000,  1, 10000,10000,-100)}
+			notin{box3d(-10000,-10000,  $(height-2), 10000,10000, 100000)}
+			
+			locate(0,0,$(height/2),1,0,0,-90)
+			{
+				notin{circle(0,0,$(channeltron_radius+1),$(channeltron_radius+1))}
+			}
+		}
+		
+	}
+	
+}     
+
+;CEM1
+electrode(6)
+{
+	locate($(width-30+channeltron_radius-5),$(height/2),$(length/2),1,180)
+	{
+		rotate_fill(360)
+		{
+			within{polyline(0,0,$(channeltron_radius),$(channeltron_radius),$(channeltron_radius),0,0,0)}
+			notin{polyline(5,0,$(channeltron_radius),$(channeltron_radius-5),$(channeltron_radius),0,5,0)}
+		}
+	}
+}
+
+
+}
+

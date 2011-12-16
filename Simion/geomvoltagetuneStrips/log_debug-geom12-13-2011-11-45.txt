@@ -1,0 +1,2 @@
+Start of new run - 12/13/2011 11:45:33 AM
+n	 fitness	 s1	 s2	 s3	 Vs1	 Vs2	 Vs3

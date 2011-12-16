@@ -1,0 +1,3 @@
+Start of new run - 12/13/2011 11:45:33 AM
+iterationVoltage no=1, best_conf_fitness=0.45378151260504 ,e1=182 ,e2=160 ,e3=24
+iterationVoltage no=2, best_conf_fitness=0.5014245014245 ,e1=124.88827478866 ,e2=0 ,e3=176.80549333171

@@ -1,0 +1,27 @@
+particles {
+  coordinates = 1,
+  standard_beam {
+    n = 1000,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 40,
+    az = uniform_distribution {
+      min = -3,
+      max = 3
+    },
+    el = uniform_distribution {
+      min = -3,
+      max = 3
+    },
+    cwf = 1,
+    color = 0,
+    position = cylinder_distribution {
+      center = vector(6, 46, 100),
+      axis = vector(0, 0, 1),
+      radius = 6,
+      length = 198,
+      fill = true
+    }
+  }
+}
