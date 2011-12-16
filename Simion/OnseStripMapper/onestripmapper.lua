@@ -1,36 +1,45 @@
 simion.workbench_program()
+
+--this workbench program more och less does a 3 parameter sweep over voltage of the strip, width of the strip
+--and the kinetic energy of the electrons. for each point in parameter space it will evaluate the "fitness" of
+-- the current configuration which is in principle just the collection efficency of the box setup. This is saved
+-- to a log file in the working directory.
+-- runs well in simions batch mode. launch with "simion.exe --nogui fly onestripmapper.iob --retain-trajctories=0"
+
  
---adjustables
+--adjustables change any of the adjustables below if you want to change for example the scan lengths.
 adjustable _cem_voltage      	= 200
 adjustable _strip1_width_min 	= 30
 adjustable _strip1_width_max 	= 90
 adjustable _step_width       	= 4
 adjustable _strip1_voltage_min  = 0
 adjustable _strip1_voltage_max  = 20
-adjustable _ke_min 		= 0
-adjustable _ke_max		= 50
-adjustable _ke_step		= 0.5
-adjustable _step_voltage	= 1
-adjustable _num_electrons 	= 1000
+adjustable _step_voltage		= 1
+adjustable _ke_min 				= 0
+adjustable _ke_max	   			= 50
+adjustable _ke_step	   			= 0.5
+adjustable _num_electrons 		= 1000   -- important, this value must match the number of electrons specified in the onestripmapper.fly2  file
   
---local "constants"
+--locals
 local strip1_set_voltage = 0
 local ke_set = 0
 local last_fitness = 0
-
-local iob_width = 360
+                     
+-- just defines the size of the ion work bench. Can probably be found programattically.
+local iob_width = 296
 local iob_height = 92
 local iob_length = 200 
 
---channeltron radius and position. (is used to calculate ion splat inside or outside channeltron)
+--channeltron radius and position, needs to be updated if the position of the cem changes. (is used to calculate ion splat inside or outside channeltron)
 local Rc = 30
-local Xc = 355
+local Xc = 291
 local Yc = 46
 local Zc = 100 
          
 -- used to find out how many electrons actually made it into the box
-local start_of_box = 151
-            
+local start_of_box = 90
+
+--is going to store all splats.            
 local splats = {}
            
 -- clear the splats.    
@@ -98,7 +107,7 @@ end
 function segment.flym()
 	init()
 	local logger = logfile(("log-%s.txt"):format(os.date("%m-%d-%Y-%H-%M")))
-	logger:add_line("width, voltage, fitness")
+	logger:add_line("width, voltage, kinetic energy , fitness")
 	      
    	for i=1, (_strip1_width_max-_strip1_width_min)/_step_width do
 		_G.s1 = _strip1_width_min +_step_width*(i-1)
@@ -133,7 +142,7 @@ function segment.terminate_run()
 	local num_electrons_inside_box = 0
 	
 	for i=1, _num_electrons do
-		Rmax = Xc -splats[i].x
+		Rmax = Xc - splats[i].x
 		Rs = math.sqrt((splats[i].y-Yc)^2 + (splats[i].z-Zc)^2)
 		
 		if splats[i].x > start_of_box then
@@ -143,19 +152,10 @@ function segment.terminate_run()
 				num_electrons_inside_cem = num_electrons_inside_cem + 1
 			end
 		end
-		
-		
-	    --print("n=" .. i ..
-	    --	  " ,x=" .. splats[i].x ..
-	    --   " ,y=" .. splats[i].y ..
-	    --   " ,z=" .. splats[i].z)
-	    --print("Rs=" .. Rs .. 
-	    --	  ", Rmax=" .. Rmax)
+	
 	 end
 	
 	print(num_electrons_inside_cem .. " " .. num_electrons_inside_box)
-
-
 	 -- Print out the statistics.
 	 last_fitness = num_electrons_inside_cem/num_electrons_inside_box
 	
@@ -180,8 +180,6 @@ end
 function segment.fast_adjust()
    	  --change the elctrode values to the current particles optimization values.	
 	adj_elect02 = strip1_set_voltage
-	--adj_elect03 = particle_swarm_voltage[particle_counter_voltage].current_conf.s2
-	--adj_elect04 = particle_swarm_voltage[particle_counter_voltage].current_conf.s3
 	adj_elect06 = _cem_voltage
 end
  
