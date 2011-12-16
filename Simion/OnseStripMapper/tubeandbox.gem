@@ -1,0 +1,166 @@
+; This file is the gemotric file for the optimizing setup
+; The file combines one half of a detector box and and section of the graphite tube
+; to keep the size of the potential arrays as small as possible.
+; You can alter the size of the box and tube by changing the values below.
+; if you change values that will affect the size of the pa you might have to make a new pa from the beginning.
+; 
+; TODO: Number of holes are hard coded at the moment. Change it to auto.
+; 
+;1mm=4gu (scale=0.25 in SIMION)
+
+$(local box_width = 4*45+30)    		;width is 45mm + an extra 30 gu to make room for the CEM in the back
+$(local box_length = 50*4)      		;length is 50 mm and is one half of a  graphite tube. tube will be the same length
+$(local box_height = 92)        		;height is 23mm at the moment. no specific reason for this value. tube will have the same height
+$(local channeltron_diameter = 15*4)  ;Channeltron diamter is 15mm
+$(local tube_inner_diameter = 12*4)     ;inner diameter of the graphite tube.
+$(local tube_outer_diameter = 30*4)     ;outer diameter of the graphite tube
+$(local ion_beam_diameter = 12 )			;3mm diameter ion beam
+$(local tube_box_separation = 20)		;distance between the box and the tube.
+
+$( if not _G.s1 then _G.s1 = 75 end)    ;sets the width of the strip in  the box. used by the mapper program.
+
+;Define the array, add 100 between the real end of the box and the back wall.
+pa_define($(box_width+tube_outer_diameter/2+6+tube_box_separation),$(box_height),$(box_length),p,n) 		
+
+; Tube.
+electrode(1)
+{
+	locate($(ion_beam_diameter/2),$(box_height/2),0,1,0,0,180)  ;locate the tube to the left and in the center in y-direction 
+	{
+      	fill			;Volume fill.
+		{ 
+			within		;Include volume.
+			{
+ 				cylinder(0,0,0,$(tube_outer_diameter/2),$(tube_outer_diameter/2),$(box_length)) 
+			}
+			notin
+			{
+ 				cylinder(0,0,0,$(tube_inner_diameter/2),$(tube_inner_diameter/2),$(box_length)) 
+			}
+			notin ;only use right half of the tube.
+			{
+				box3d(0,$(box_length),0,-$(box_length),-$(box_length),-$(box_length))
+			}
+# local nholes= 7			
+# for n=1,nholes do
+
+# local zpos=(n-1)*27.5+17
+			locate(0,0,$(-zpos),1,-90)        ;Hole no. 1.
+			{
+				notin
+				{
+					circle(0,0,10,10)
+				}
+			}
+			locate(0,0,$(-zpos),1,90,0,90)        ;Hole no. 1.
+			{
+				notin
+				{
+					circle(0,0,10,10)
+				}
+			}
+# end
+		}
+
+	}
+}
+
+; First mesh
+electrode(1)
+{
+	locate($(ion_beam_diameter/2),$(box_height/2),0,1,180)
+	{
+		fill
+		{
+			within{cylinder(0,0,0,$(tube_outer_diameter/2+4),$(tube_outer_diameter/2+4),$(box_length))}
+			notin{circle(0,0,$(tube_outer_diameter/2+3),$(tube_outer_diameter/2+3))}
+		}	
+	}
+}
+
+;locate the box at the right distance     
+locate($(tube_outer_diameter/2+6+tube_box_separation),0,0){
+; box.
+electrode(1)
+{
+	fill			;Volume fill.
+	{ 
+		within		;Include volume.
+		{
+ 			box3d(0,0,0,$(box_width-1),$(box_height-1),$(box_length-1)) 
+		}
+		;make it hollow, 2 gu thick walls (0.5mm)
+		notin
+		{
+ 			box3d(2,2,2,$(box_width-2-30),$(box_height-3),$(box_length-3)) 
+		}
+		;leave room for the back wall.
+		notin
+		{
+ 			box3d($(box_width-30+2),2,2,$(box_width-3),$(box_height-3),$(box_length-3)) 
+		}
+		
+		;front hole.
+		notin
+		{
+			box3d(0,$(box_height/2-20),2,2,$(box_height/2+20),$(box_length-3))
+		}
+
+		;make a hole for the channeltrons.
+		locate(0,$(box_height/2),0,1,90)
+		{
+			notin
+			{
+				cylinder(-$(box_length/2),0,$(box_width+1-30),$(channeltron_diameter/2),$(channeltron_diameter/2),5)
+			}
+		} 
+
+		
+	}
+
+
+	
+		
+}
+
+;final plate.
+electrode(2)
+{
+	fill
+	{
+		locate($(box_width-2-30),0,$(box_length/2),1,90,0,-90)
+		{
+			;Map out the shape
+			within{polyline(-$(_G.s1/2),0 ,$(_G.s1/2),0 ,$(_G.s1/2),$((box_width-30-4)), -$(_G.s1/2),$((box_width-30-4)) )}
+			
+			;trim away z-direction excess.
+			notin{box3d(-10000,     0,  4, 10000,10000, $(box_height-5))}
+			notin{box3d(-10000,-10000,  1, 10000,10000,-100)}
+			notin{box3d(-10000,-10000,  $(box_height-2), 10000,10000, 100000)}
+			
+			locate(0,0,$(box_height/2),1,0,0,-90)
+			{
+				notin{circle(0,0,$(channeltron_diameter/2+1),$(channeltron_diameter/2+1))}
+			}
+		}
+		
+	}
+	
+}     
+
+;CEM1
+electrode(6)
+{
+	locate($(box_width-30+channeltron_diameter/2-5),$(box_height/2),$(box_length/2),1,180)
+	{
+		rotate_fill(360)
+		{
+			within{polyline(0,0,$(channeltron_diameter/2),$(channeltron_diameter/2),$(channeltron_diameter/2),0,0,0)}
+			notin{polyline(5,0,$(channeltron_diameter/2),$(channeltron_diameter/2-5),$(channeltron_diameter/2),0,5,0)}
+		}
+	}
+}
+
+
+}
+
